@@ -8,3 +8,21 @@
 	text-align: center;
 	margin-top: 13px;
 }
+
+
+.button.button-balanced.inactive{
+	background-color: grey;	
+}
+
+ion-content {
+	background-color: rgb(243,243,243);
+}
+
+.item{
+	background-color: rgb(243,243,243) !important;
+}
+
+.item-input-wrapper{
+	background-color: white !important;
+	color: white!important;
+}

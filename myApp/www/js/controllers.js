@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, $state, $cordovaFacebook, $http){
+.controller('LoginCtrl', function($scope, $stateParams, $state, $cordovaFacebook, $http, ChillApi){
   $scope.login = function() {
    $cordovaFacebook.login(["public_profile", "email", "user_friends"])
     .then(function(success) {
@@ -37,9 +37,17 @@ angular.module('starter.controllers', [])
         }
       })
       .then(function(fbInfoResult) {
-        $state.go('tab.chats');
-        console.log('alskdjlkjqwlekjlxczxc');
-        console.log(fbInfoResult);
+
+        ChillApi.registerWithFacebook(fbInfoResult.data.email,
+                        fbInfoResult.data.first_name,
+                        fbInfoResult.data.last_name,
+                        success.authResponse.accessToken, function(){
+                          $state.go('tab.chats');
+                        });   
+
+
+        
+       
         /*$state.go('createAccount', {
           "email": fbInfoResult.data.email,
           "firstName": fbInfoResult.data.first_name,
