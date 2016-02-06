@@ -27,8 +27,15 @@ ion-content {
 	color: white!important;
 }
 
-.button-positive{
-	color: rgb(55,235,190);
+.button-balanced{
+	
+	background-color:  rgb(55,235,190) !important;
+}	
+
+.bar-balanced{
+	
+	background-color:  rgb(55,235,190) !important;
+}	
 
 section.chats div {
 
