@@ -1,0 +1,20 @@
+<ion-view view-title="Chill">
+  <ion-content>
+    <ion-refresher
+    pulling-text="See New Chill People"
+    on-refresh="doRefresh()">
+  </ion-refresher>
+    <ion-list>
+      <ion-item class="item item-button-right item-avatar" style="padding-right:0px;" ng-repeat="chat in chats" type="item-text-wrap" >
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}} is down to chill</h2>
+        <p>Type: {{chat.lastText}}</p>
+  <button class="button button-balanced" ng-click = "join(chat)">
+      Join
+    </button>
+
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

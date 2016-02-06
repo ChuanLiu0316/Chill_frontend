@@ -1,0 +1,10 @@
+/* Empty. Add your own CSS if you like */
+.item.item-button-right.item-avatar{
+	padding-right: 0px; 
+}
+
+.item.item-button-right.item-avatar button{
+	width:70px;
+	text-align: center;
+	margin-top: 13px;
+}
