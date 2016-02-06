@@ -1,6 +1,35 @@
 angular.module('starter.controllers', [])
 
-.controller('ChatCtrl', function($scope) {})
+.controller('ChatCtrl', function($scope, $interval, $http) {
+  $scope.data = {};
+  $scope.data.message = "";
+  $scope.messages = {};
+
+  var stop;
+  $scope.getMessages = function(){
+    if (angular.isDefined(stop)) return;
+    data = {'group': "hi"};
+    stop = $interval(function(){
+      $http.post('/', data).then(function(data){
+        $scope.messages = data;
+      })
+    }, 1000);
+  };
+
+  $scope.getBubbleClass = function(username){
+    var classname = 'from-them';
+    if($scope.messageIsMine(username)){
+      classname = 'from-me';
+    }
+    return classname;
+  };
+
+  $scope.messageIsMine = function(username){
+    return $scope.data.username === username;
+  };
+
+  $scope.getMessages();
+})
 
 .controller('ChillCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
