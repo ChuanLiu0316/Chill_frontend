@@ -1,37 +1,37 @@
-<ion-view view-title="Account">
+<ion-view view-title="Update Status">
   <ion-content>
   	<div style = "width:100%; text-align:center">
   	<div style = "margin: 0 auto; margin-top: 100px;">
 	  	<div style = "display:inline-block;">
-	  		<button  class="button button-balanced inactive">I'm done to chill</button>
-	  		<button  class="button button-balanced">No longer chill</button>
+	  		<button id="chill" class="button button-balanced inactive" ng-click="setchill()">I'm done to chill</button>
+	  		<button id="unchill" class="button button-balanced" ng-click="setunchill()">No longer chill </button>
 	  	</div>
 		<div class="list" style = "margin-top:30px;">
 		  <div class="item item-input-inset" style="width: 85%; left:7.5%; border-style:none" >
 		    <label class="item-input-wrapper" style="width: 70%">
-		      <input type="text" placeholder="what to do">
+		      <input type="text" placeholder="what to do" ng-model="$parent.data.type">
 		    </label>
 		  </div>
 
 		  <div class="item item-input-inset" style="width: 85%; left:7.5%; border-style:none">
 		    <label class="item-input-wrapper" style="width: 70%">
-		      <input type="number" placeholder="Chill of how long">
+		      <input type="number" placeholder="Chill of how long" ng-model="$parent.data.time">
 		    </label>
 		  </div>
 
 		  <div class="item item-input-inset" style="width: 85%; left:7.5%; border-style:none">
 		    <label class="item-input-wrapper" style="width: 70%">
-		      <input type="text" placeholder="set max people">
+		      <input type="number" placeholder="set max people" ng-model="$parent.data.people">
 		    </label>
 		  </div>
 
 		  <div class="item item-input-inset" style="width: 85%; left:7.5%; border-style:none">
 		    <label class="item-input-wrapper" style="width: 70%">
-		      <input type="text" placeholder="description">
+		      <input type="text" placeholder="description" ng-model="$parent.data.description">
 		    </label>
 		  </div>
 
-		  <button class="button button-block button-balanced" style = "margin-top:20px;width:80%; left:10%" > Save</button>
+		  <button class="button button-block button-balanced" style = "margin-top:20px;width:80%; left:10%"  ng-click="updatechill()"> Save</button>
 
 
 		</div>

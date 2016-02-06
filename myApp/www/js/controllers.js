@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
   $scope.getMessages();
 })
 
-.controller('ChillCtrl', function($scope, Chats) {
+.controller('ChillCtrl', function($scope, $http) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -57,12 +57,32 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  $scope.get = function(){
+    var req = {
+        method : 'POST',
+        url : CHILL_JSON_API_ADDR + '/getAllChill',
+        timeout: 3000,
+        data: {
+          'email': window.localStorage['email']
+       
+       } 
+      } 
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+      $http(req).
+      success(function(data, status, headers, config){
+        console.log('get all chilled OK');
+ 
+      }).
+      error(function(data, status, headers, config){
+        console.log('get all chiled failed');
 
-  };
+      });
+
+    
+  }
+  $scope.join = function(chat){
+
+  }
 })
 
 .controller('LoginCtrl', function($scope, $stateParams, $state, $cordovaFacebook, $http, ChillApi){
@@ -89,6 +109,7 @@ angular.module('starter.controllers', [])
                         fbInfoResult.data.first_name,
                         fbInfoResult.data.last_name,
                         success.authResponse.accessToken, function(){
+                          window.localStorage['email'] = fbInfoResult.data.email
                           $state.go('tab.chats');
                         });   
 
@@ -125,8 +146,63 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+.controller('AccountCtrl', function($scope, $http) {
+
+  $scope.isChill = false
+  $scope.type = ""
+  $scope.time = ""
+  $scope.people = ""
+  $scope.description = ""
+
+
+  $scope.data = {
+   
+    'type' : '',
+    'time' : '',
+    'people' : '',
+    'description': ''
+  }
+  $scope.setchill = function(){
+    document.getElementById('chill').className = 'button button-balanced'
+    document.getElementById('unchill').className += ' inactive'
+    $scope.isChill = true;
   };
+
+  $scope.setunchill = function(){
+    document.getElementById('unchill').className = 'button button-balanced'
+    document.getElementById('chill').className += ' inactive'
+    $scope.isChill = false;
+  };
+
+  $scope.updatechill = function(){
+    console.log($scope.isChill)
+    console.log($scope.data.type);
+    console.log($scope.data.people);
+    console.log($scope.data.time);
+    console.log($scope.data.description);
+
+
+
+
+   var req = {
+      method : 'POST',
+      url : CHILL_JSON_API_ADDR + '/getAllChill',
+      timeout: 3000,
+      data : {
+        'isChill': $scope.isChill,
+        'type' : $scope.data.tyle,
+        'email': window.localStorage['email']
+       }
+    }
+
+    $http(req).
+      success(function(){
+
+      }).
+      error(function(){
+
+     }) 
+
+  };
+
 });

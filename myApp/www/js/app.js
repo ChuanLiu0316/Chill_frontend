@@ -67,8 +67,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   .state('tab.chats', {
       url: '/chats',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/allChill.html',
+        'tab-chill': {
+          templateUrl: 'templates/tab-chill.html',
           controller: 'ChillCtrl'
         }
       }

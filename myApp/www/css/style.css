@@ -11,7 +11,7 @@
 
 
 .button.button-balanced.inactive{
-	background-color: grey;	
+	background-color: grey !important;	
 }
 
 ion-content {
