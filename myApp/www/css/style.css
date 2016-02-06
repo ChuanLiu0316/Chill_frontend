@@ -26,3 +26,7 @@ ion-content {
 	background-color: white !important;
 	color: white!important;
 }
+
+.button-positive{
+	color: rgb(55,235,190);
+}
