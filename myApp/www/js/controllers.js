@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   $scope.data.message = "";
   $scope.messages = {};
   $scope.data.username = "";
-  $scope.data.group = "";
+  $scope.data.group = "chill";
 
   var stop;
   var scrollBottom = function(){
@@ -16,10 +16,10 @@ angular.module('starter.controllers', [])
   $scope.getMessages = function(){
     if (angular.isDefined(stop)) return;
     data = {'group': $scope.data.group};
+    url = "chill-chill.herokuapp.com/receive";
     stop = $interval(function(){
-      $http.post('/', data).then(function(messages){
+      $http.post(url, data).then(function(messages){
         $scope.messages = messages;
-        scrollBottom();
       })
     }, 1000);
   };
@@ -38,9 +38,12 @@ angular.module('starter.controllers', [])
 
   $scope.sendMessage = function(msg){
     data = {"sender": $scope.data.username, "group": $scope.data.group, "content": msg};
+    url = "chill-chill.herokuapp.com/send";
     $http.post('/', data, function(data){
+      scrollBottom();
 
     });
+    $scope.data.message = "";
   };
 
   $scope.getMessages();
