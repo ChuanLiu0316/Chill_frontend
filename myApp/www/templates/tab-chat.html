@@ -3,7 +3,7 @@
 
     <section class="chats">
       <div ng-repeat="message in messages">
-        <p class="username" ng-show="!messageIsMine(message.sender)">{{message.sender}}</p>
+        <p class="username" ng-show="!messageIsMine(message.sender)">{{message.name}}</p>
         <div ng-class='getBubbleClass(message.sender)'>
           <p ng-bind="message.message"></p>
         </div>
@@ -41,7 +41,7 @@
     </section>
 
   </ion-content>
-  <form name="sendMessageForm" ng-submit="" novalidate>
+  <form name="sendMessageForm" ng-submit="sendMessage(data.message)" novalidate>
     <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
       <label class="item-input-wrapper">
         <input id="msg-input" ng-change="" ng-model="data.message" class="input-message" type="text" placeholder="Message">

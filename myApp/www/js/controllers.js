@@ -1,17 +1,25 @@
 angular.module('starter.controllers', [])
 
-.controller('ChatCtrl', function($scope, $interval, $http) {
+.controller('ChatCtrl', function($scope, $interval, $http, $ionicScrollDelegate) {
   $scope.data = {};
   $scope.data.message = "";
   $scope.messages = {};
+  $scope.data.username = "";
+  $scope.data.group = "";
 
   var stop;
+  var scrollBottom = function(){
+    $ionicScrollDelegate.resize();
+    $ionicScrollDelegate.scrollBottom(true);
+  };
+
   $scope.getMessages = function(){
     if (angular.isDefined(stop)) return;
-    data = {'group': "hi"};
+    data = {'group': $scope.data.group};
     stop = $interval(function(){
-      $http.post('/', data).then(function(data){
-        $scope.messages = data;
+      $http.post('/', data).then(function(messages){
+        $scope.messages = messages;
+        scrollBottom();
       })
     }, 1000);
   };
@@ -26,6 +34,13 @@ angular.module('starter.controllers', [])
 
   $scope.messageIsMine = function(username){
     return $scope.data.username === username;
+  };
+
+  $scope.sendMessage = function(msg){
+    data = {"sender": $scope.data.username, "group": $scope.data.group, "content": msg};
+    $http.post('/', data, function(data){
+
+    });
   };
 
   $scope.getMessages();
