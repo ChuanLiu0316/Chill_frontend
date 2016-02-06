@@ -8,39 +8,7 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-    var chats = [{
-    id: 0,
-    name: 'Chris',
-    lastText: 'food',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Chuan',
-    lastText: 'Movie',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Hannah',
-    lastText: 'Hang out',
-    face: 'img/adam.jpg'
-  }];
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
 })
 
 
