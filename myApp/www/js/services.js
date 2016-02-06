@@ -1,4 +1,4 @@
-var CHILL_JSON_API_ADDR = "https://(something).herokuapp.com/";
+var CHILL_JSON_API_ADDR = "https://chill-chill.herokuapp.com";
 
 
 

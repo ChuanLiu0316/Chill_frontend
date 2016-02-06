@@ -9,6 +9,27 @@
 	margin-top: 13px;
 }
 
+
+.button.button-balanced.inactive{
+	background-color: grey;	
+}
+
+ion-content {
+	background-color: rgb(243,243,243);
+}
+
+.item{
+	background-color: rgb(243,243,243) !important;
+}
+
+.item-input-wrapper{
+	background-color: white !important;
+	color: white!important;
+}
+
+.button-positive{
+	color: rgb(55,235,190);
+
 section.chats div {
 
 	word-wrap: break-word;
@@ -90,4 +111,5 @@ section.chats p.username{
 
 .clear {
 	clear: both;
+
 }
