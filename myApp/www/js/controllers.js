@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
     
 
 
-      console.log('enter get request')
+      console.log('enter get request');
       /* register the user with all information and facebook token */
       $http.get("https://graph.facebook.com/v2.2/me", {
         timeout:3000,
